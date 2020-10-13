@@ -1,4 +1,4 @@
-FROM debian:10.0-slim as build
+FROM debian:10.6-slim as build
 
 RUN apt-get update --yes
 RUN apt-get install --yes --no-install-recommends libssl-dev=1.1.1c-1
@@ -10,7 +10,7 @@ WORKDIR /armake2-master
 COPY . .
 RUN cargo build --release
 
-FROM debian:10.0-slim
+FROM debian:10.6-slim
 RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends libssl1.1=1.1.1c-1 && \
     rm -rf /var/lib/apt/lists/*
